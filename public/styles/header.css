@@ -1,9 +1,20 @@
 header {
   height: 520px;
   padding-top: 120px;
-  background-color: #dcdee0;
-  background-image: url("https://www.transparenttextures.com/patterns/blu-stripes.png");
+  background-color: #0f0e00;
+  background-image: url("https://www.transparenttextures.com/patterns/dimension.png");
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.name {
+  font-size: 20px;
+  color:  #FFF;
+  position: relative;
+  top: -30px;
+}
+
+.avatar {
+  margin-top: 40px;
 }

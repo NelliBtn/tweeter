@@ -2,9 +2,10 @@ nav {
   display: flex;
   height: 120px;
   width: 100%;
-  background: #4056A1;
+  background: #0f0e00;
   justify-content: space-between;
   position: fixed;
+  border-bottom: 2px solid white;
 }
 
 #logo {

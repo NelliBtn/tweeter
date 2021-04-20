@@ -1,0 +1,31 @@
+nav {
+  display: flex;
+  height: 120px;
+  width: 100%;
+  background: #4056A1;
+  justify-content: space-between;
+  position: fixed;
+}
+
+#logo {
+  font-family: "Bungee";
+  font-size: 24px;
+  color: #FFF;
+  margin-left: 1.5em;
+  flex-direction: row;
+  align-self: center;
+}
+
+.right {
+  display: flex;
+  margin-right: 1.5em;
+  color: #FFF;
+  flex-direction: column;
+  align-self: center;
+}
+
+#arrow {
+  margin-top: 5px;
+  flex-direction: column;
+  align-self: center;
+}

@@ -1,8 +1,8 @@
-header {
+.main-header {
   height: 520px;
   padding-top: 120px;
-  background-color: #0f0e00;
-  background-image: url("https://www.transparenttextures.com/patterns/dimension.png");
+  background-color: #d9d1bd;
+  background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,8 @@ header {
 
 .name {
   font-size: 20px;
-  color:  #FFF;
+  font-style: italic;
+  color:  #0f0e00;
   position: relative;
   top: -30px;
 }

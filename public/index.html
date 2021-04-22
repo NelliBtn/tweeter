@@ -52,6 +52,9 @@
     <main class="container">
       <section class="new-tweet">
         <h2 id="compose-text">Compose Tweet</h2>
+        <div class="alert">
+          <script>$(errorMessage)</script>
+        </div>
         <form class="form-inline" id="submit-new-tweet-button" action="/tweets/" method="POST">
           <div class="input">
             <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
@@ -64,6 +67,7 @@
       </section>
 
       <section class="tweets">
+
       </section>
     </main>
   </body>

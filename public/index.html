@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <!-- Meta Information -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <title>Tweeter - Home Page</title>
 
     <!-- External CSS -->
@@ -38,7 +39,9 @@
     </nav>
 
     <!-- Header -->
-  <header class="main-header">
+  <header>
+
+  <div class="main-header">
     <div class="avatar">
         <img src="/images/profile-hex.png"> 
     </div>
@@ -46,10 +49,12 @@
     <div class="name">
         <h2>Apple Strudel</h2>
     </div>
+    </div>
+    
   </header>
 
-    <!-- Page-specific (main) content here -->
-    <main class="container">
+  <main class="container">
+      <!-- Container for submitting a new tweet -->
       <section class="new-tweet">
         <h2 id="compose-text">Compose Tweet</h2>
         <div class="alert">
@@ -66,15 +71,9 @@
           </div>
         </form>
       </section>
-
+      <!-- Containers with all tweets -->
       <section class="tweets">
-
       </section>
     </main>
   </body>
-  <script>
-    $(document).ready(() => { 
-      $('.date').text(timeago.format(new Date()));
-     })
-  </script>
 </html>

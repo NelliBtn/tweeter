@@ -4,7 +4,10 @@ const createTweetElement = function(tweetObj) {
   const avatar = tweetObj.user.avatars;
   const nickname = tweetObj.user.handle;
   const content = tweetObj.content.text;
-  const date = tweetObj.created_at;
+  let date = tweetObj.created_at;
+  date = timeago.format(date);
+
+
   $('.tweets').prepend(
     `<article class="tweet-container">
     <header class="user-info">
@@ -30,16 +33,22 @@ const createTweetElement = function(tweetObj) {
 // POST the tweet to the server database
 const postTweet = function() {
   const tweetText = $( "#submit-new-tweet-button").serialize();
+  console.log(tweetText)
+  //EDGE CASES
   if (!$('#tweet-text').val()) {
-    // triggerError('Your tweet is empty or invalid!');
+    $(".errorMessage").text("The tweet is empty or invalid!");
     $(".alert").slideDown();
     return;
   }
   if ($('#tweet-text').val().length > 140) {
+    $(".errorMessage").text("The tweet is waaaay too long!");
     $(".alert").slideDown();
     return;
   }
-  $.post('/tweets', tweetText)
+  // IF NO ERRORS
+  $.post('/tweets', tweetText);
+  $('#tweet-text').val('');
+
 };
 
 // XSS escape
@@ -63,32 +72,37 @@ const loadTweets = function() {
   })
 };
 
-// const triggerError = function (errorMessage) {
-//   $(".new-tweet").prepend(
-//   `<div class="alert">
-//     ${errorMessage}
-//   </div>`);
-// };
-  
+
     
 $(document).ready(function() {
-  loadTweets(); // load the tweeter page
+
+  // LOAD ALL TWEETS
+  loadTweets();
+
+  // POST AND UPLOAD A NEW TWEET
   $("#submit-new-tweet-button").on('submit', function(event) {
     event.preventDefault();
-    postTweet(); //add to database
+    postTweet(); // add to database
+    $('.tweets').empty(); // empty the current tweet container to avoid duplicating
     loadTweets(); // reload the tweeter page
+
   })
 
+  // TRIGGERING ERRORS WHILE TYPING 
   $('#tweet-text').on('input', function() {
     const text = $(this).val();
     if (text.length > 0 && text.length < 140) {
       $(".alert").slideUp();
     }
     if (text.length > 140) {
-      const errorMessage = 'Your tweet is too long!'
+      $(".errorMessage").text("The tweet is waaaay too long!");
       $(".alert").slideDown();
     }
   });
+
+  $('.closebtn').on('click', function() {
+    $(".alert").slideUp();
+  })
 
 });
     

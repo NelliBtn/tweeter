@@ -10,10 +10,6 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
-
 body {
   color: #6e6c68;
   background-color: #f4f1ec;
@@ -25,15 +21,31 @@ main {
   padding: 0 5%;
   width: 100%;
   height: 1080px;
-  margin-top: 30px;
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
   background-color: #f4f1ec;
   align-items: center;
 }
 
+.tweets {
+  width: 100%;
+}
 
+/* DESKTOP */
+@media only screen and (min-width: 1024px) {
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+  .main-header {
+    width: 30%;  /* BUG TO FIX -- make avatar nice and square */
+    height: 30vw;
+    margin-top: 250px;
+    margin-left: 5%;
+    float: left;
+    align-items: center;
+  }
+  .container {
+    padding-top: 220px;
+    max-width: 65%;
+    font-size: 0.8em;
+  }
+}

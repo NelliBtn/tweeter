@@ -5,7 +5,8 @@
   flex-direction: column;
   margin-top: 100px;
   padding: 50px;
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   height: 300px;
   justify-content: space-around;
   border: #0f0e00 solid 5px;

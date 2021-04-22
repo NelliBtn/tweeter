@@ -1,11 +1,4 @@
-
-/*
-* Client-side JS logic goes here
-* jQuery is already loaded
-* Reminder: Use (and do all your DOM work in) jQuery's document ready function
-*/
-
-
+// create a tweet container 
 const createTweetElement = function(tweetObj) {
   const name = tweetObj.user.name;
   const avatar = tweetObj.user.avatars;
@@ -21,7 +14,7 @@ const createTweetElement = function(tweetObj) {
     </div>
     <p class="nickname">${nickname}</p>
     </header>
-    <p class="tweet">${content}</p>
+    <p class="tweet">${escape(content)}</p>
     <footer>
     <p class="date">${date}</p>
     <div class="icons">
@@ -33,25 +26,50 @@ const createTweetElement = function(tweetObj) {
     </article>`
   ); 
 };
-  
+
+// POST the tweet to the server database
 const postTweet = function() {
   const tweetText = $( "#submit-new-tweet-button").serialize();
-  //console.log($('#tweet-text').val)
+  // edge cases trigger an alert box
+  if (!$('#tweet-text').val()) {
+    triggerError('Your tweet is empty or invalid!');
+    return;
+  }
+  if ($('#tweet-text').val().length > 140) {
+    triggerError('Your tweet is way too long!');
+    return;
+  }
   $.post('/tweets', tweetText)
 };
+
+// XSS escape
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
   
-  
+// loop through the array of tweet objects
 const renderTweets = function(data) {
   for (let tweet of data) {
     createTweetElement(tweet);
   }
 };
   
-  
+// pull out the tweets from server database
 const loadTweets = function() {
   $.ajax('/tweets', { method: 'GET' }).then(data => {
     renderTweets(data);
   })
+};
+
+// pop up alert box
+const triggerError = function (errorMessage) {
+  $(".new-tweet").prepend(
+  `<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    ${errorMessage}
+  </div>`);
 };
   
     

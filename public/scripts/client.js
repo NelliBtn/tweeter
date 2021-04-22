@@ -1,33 +1,9 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
-const tweetData = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
+/*
+* Client-side JS logic goes here
+* jQuery is already loaded
+* Reminder: Use (and do all your DOM work in) jQuery's document ready function
+*/
 
 
 const createTweetElement = function(tweetObj) {
@@ -37,8 +13,7 @@ const createTweetElement = function(tweetObj) {
   const content = tweetObj.content.text;
   const date = tweetObj.created_at;
   $('.tweets').prepend(
-    `
-    <article class="tweet-container">
+    `<article class="tweet-container">
     <header class="user-info">
     <div class="avatar-name">
     <img src="${avatar}}"></img>
@@ -55,30 +30,39 @@ const createTweetElement = function(tweetObj) {
     <i id="like" class="far fa-heart"></i>
     </div>
     </footer>
-    </article>
-    `
-    ); 
-  };
+    </article>`
+  ); 
+};
   
-  const postTweet = function() {
-    const tweetText = $( "#submit-new-tweet-button").serialize();
-    $.post('/tweets', tweetText)
-  };
-
-
-  const renderTweet = function(tweetData) {
-    for (let tweet of tweetData) {
-      createTweetElement(tweet);
-      $("#submit-new-tweet-button").on('submit', function(event) {
-        event.preventDefault();
-        postTweet();
-      })
-    }
-  };
-
-
-
+const postTweet = function() {
+  const tweetText = $( "#submit-new-tweet-button").serialize();
+  //console.log($('#tweet-text').val)
+  $.post('/tweets', tweetText)
+};
+  
+  
+const renderTweets = function(data) {
+  for (let tweet of data) {
+    createTweetElement(tweet);
+  }
+};
+  
+  
+const loadTweets = function() {
+  $.ajax('/tweets', { method: 'GET' }).then(data => {
+    renderTweets(data);
+  })
+};
+  
+    
 $(document).ready(function() {
-  renderTweet(tweetData);
-})
-
+  loadTweets(); // load the tweeter page
+  $("#submit-new-tweet-button").on('submit', function(event) {
+    event.preventDefault();
+    postTweet(); //add to database
+    loadTweets(); // reload the tweeter page
+  })
+});
+    
+    
+    

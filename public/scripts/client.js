@@ -30,13 +30,13 @@ const createTweetElement = function(tweetObj) {
 // POST the tweet to the server database
 const postTweet = function() {
   const tweetText = $( "#submit-new-tweet-button").serialize();
-  // edge cases trigger an alert box
   if (!$('#tweet-text').val()) {
-    triggerError('Your tweet is empty or invalid!');
+    // triggerError('Your tweet is empty or invalid!');
+    $(".alert").slideDown();
     return;
   }
   if ($('#tweet-text').val().length > 140) {
-    triggerError('Your tweet is way too long!');
+    $(".alert").slideDown();
     return;
   }
   $.post('/tweets', tweetText)
@@ -63,14 +63,12 @@ const loadTweets = function() {
   })
 };
 
-// pop up alert box
-const triggerError = function (errorMessage) {
-  $(".new-tweet").prepend(
-  `<div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    ${errorMessage}
-  </div>`);
-};
+// const triggerError = function (errorMessage) {
+//   $(".new-tweet").prepend(
+//   `<div class="alert">
+//     ${errorMessage}
+//   </div>`);
+// };
   
     
 $(document).ready(function() {
@@ -80,6 +78,18 @@ $(document).ready(function() {
     postTweet(); //add to database
     loadTweets(); // reload the tweeter page
   })
+
+  $('#tweet-text').on('input', function() {
+    const text = $(this).val();
+    if (text.length > 0 && text.length < 140) {
+      $(".alert").slideUp();
+    }
+    if (text.length > 140) {
+      const errorMessage = 'Your tweet is too long!'
+      $(".alert").slideDown();
+    }
+  });
+
 });
     
     

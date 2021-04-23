@@ -15,7 +15,6 @@ Functionality includes:
 
 ## Final Product
 
-//screenshots
 
 ## Dependencies
 

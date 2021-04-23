@@ -25,6 +25,10 @@ Functionality includes:
 
 ## Final Product
 
+![Screenshot of the main page for 1024px and above](https://github.com/NelliBtn/tweeter/blob/master/docs/main-page-1024px-and-above.png?raw=true)
+![Screenshot of the error and dynamic char counter](https://github.com/NelliBtn/tweeter/blob/master/docs/error-and-dynamic-char-counter.png?raw=true)
+![Screenshot of the responsive layout for 1023px and below](https://github.com/NelliBtn/tweeter/blob/master/docs/main-page-1023-and-below.png?raw=true)
+
 
 ## Dependencies
 

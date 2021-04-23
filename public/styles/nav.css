@@ -2,6 +2,7 @@ nav {
   display: flex;
   height: 120px;
   width: 100%;
+  padding: 0 1.5em;
   background: #0f0e00;
   justify-content: space-between;
   position: fixed;
@@ -12,14 +13,12 @@ nav {
   font-family: "Bungee";
   font-size: 24px;
   color: #FFF;
-  margin-left: 1.5em;
   flex-direction: row;
   align-self: center;
 }
 
 .right {
   display: flex;
-  margin-right: 1.5em;
   color: #FFF;
   flex-direction: column;
   align-self: center;
@@ -28,5 +27,9 @@ nav {
 #arrow {
   margin-top: 5px;
   flex-direction: column;
+  align-self: center;
+}
+
+.bounce {
   align-self: center;
 }

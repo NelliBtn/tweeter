@@ -1,17 +1,26 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone.
+Tweeter is a simple, single-page Ajax-based Twitter clone. SPA is built with HTML, CSS, JS, jQuery and AJAX for front-end, and Node, Express and MongoDB for back-end.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
+Display:
+-- responsive CSS with a breakpoint at 1024px;
+-- fixed Navigation bar;
+-- header includes an avatar and the user name;
+-- compose tweet box with a submit button and a character counter;
+-- list of tweets displaying tweets in reverse-chronological order (using timeago library to display the time passed since a tweet).
+Functionality includes:
+-- a dynamic Character Counter that updates to show how many characters user can still type (with maximum of 140);
+-- app submits a valid tweet and the list of tweets is refreshed (displaying a new tweet), the input is cleared, the cheracter counter is reset;
+-- appropriate error messages are displyed when user exceeds the valid amount of characters or submits an invalid tweet.
 
-## Getting Started
+## Final Product
 
-1. Fork this repository, then clone your fork of this repository.
-2. Install dependencies using the `npm install` command.
-3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
-4. Go to <http://localhost:8080/> in your browser.
+//screenshots
 
 ## Dependencies
 
 - Express
 - Node 5.10.x or above
+- body-parser
+- chance
+- express

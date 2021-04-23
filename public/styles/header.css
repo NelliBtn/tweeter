@@ -1,22 +1,35 @@
 .main-header {
   height: 520px;
-  padding-top: 120px;
+  padding-top: 20%;
   background-color: #d9d1bd;
   background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
+  justify-content:space-around;
   align-items: center;
 }
 
-.name {
-  font-size: 20px;
+.main-header .name {
+  display: flex;
   font-style: italic;
   color:  #0f0e00;
-  position: relative;
-  top: -30px;
+  margin-bottom: 5%;;
 }
 
-.avatar {
-  margin-top: 40px;
+.main-header .avatar {
+  display: flex;
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1024px) {
+  .main-header {
+    width: 30%;
+    height: 30vw;
+    margin-top: 250px;
+    margin-left: 5%;
+    padding-top: 3%;
+    float: left;
+    align-items: center;
+  }
 }
 

@@ -26,7 +26,7 @@
 
 .user-info .avatar-name {
   display: flex;
-  align-items: baseline;
+  align-self: center;
   font-style: italic;
 }
 

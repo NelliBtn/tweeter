@@ -8,6 +8,8 @@ Display:
 -- header includes an avatar and the user name;
 -- compose tweet box with a submit button and a character counter;
 -- list of tweets displaying tweets in reverse-chronological order (using timeago library to display the time passed since a tweet).
+
+
 Functionality includes:
 -- a dynamic Character Counter that updates to show how many characters user can still type (with maximum of 140);
 -- app submits a valid tweet and the list of tweets is refreshed (displaying a new tweet), the input is cleared, the cheracter counter is reset;

@@ -1,4 +1,4 @@
-// create a tweet container 
+//CREATE NEW TWEET CONTAINER
 const createTweetElement = function(tweetObj) {
   const name = tweetObj.user.name;
   const avatar = tweetObj.user.avatars;
@@ -7,7 +7,7 @@ const createTweetElement = function(tweetObj) {
   let date = tweetObj.created_at;
   date = timeago.format(date);
 
-
+  // HTML FOR A TWEET CONTAINER
   $('.tweets').prepend(
     `<article class="tweet-container">
     <header class="user-info">
@@ -27,13 +27,12 @@ const createTweetElement = function(tweetObj) {
     </div>
     </footer>
     </article>`
-  ); 
+  );
 };
 
 // POST the tweet to the server database
 const postTweet = function() {
-  const tweetText = $( "#submit-new-tweet-button").serialize();
-  console.log(tweetText)
+  const tweetText = $("#submit-new-tweet-button").serialize();
   //EDGE CASES
   if (!$('#tweet-text').val()) {
     $(".errorMessage").text("The tweet is empty or invalid!");
@@ -48,11 +47,11 @@ const postTweet = function() {
   // IF NO ERRORS
   $.post('/tweets', tweetText);
   $('#tweet-text').val('');
-
+  $('#tweet-text').parents('form').find('.counter').text("140");
 };
 
 // XSS escape
-const escape = function (str) {
+const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -69,10 +68,8 @@ const renderTweets = function(data) {
 const loadTweets = function() {
   $.ajax('/tweets', { method: 'GET' }).then(data => {
     renderTweets(data);
-  })
+  });
 };
-
-
     
 $(document).ready(function() {
 
@@ -85,10 +82,9 @@ $(document).ready(function() {
     postTweet(); // add to database
     $('.tweets').empty(); // empty the current tweet container to avoid duplicating
     loadTweets(); // reload the tweeter page
+  });
 
-  })
-
-  // TRIGGERING ERRORS WHILE TYPING 
+  // TRIGGERING ERRORS WHILE TYPING
   $('#tweet-text').on('input', function() {
     const text = $(this).val();
     if (text.length > 0 && text.length < 140) {
@@ -102,7 +98,7 @@ $(document).ready(function() {
 
   $('.closebtn').on('click', function() {
     $(".alert").slideUp();
-  })
+  });
 
 });
     
